@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fazil Portfolio</title>
+    <meta name="description" content="Portfolio of Fazil, Creative Technologist">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">fazil</div>
+        <ul class="nav-links">
+            <li><a href="#works">Works</a></li>
+            <li><a href="https://www.instagram.com/faiz.i_/">Instagram</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Background Video Container -->
+    <div class="hero-background">
+        <video autoplay loop muted playsinline class="bg-video">
+            <source src="freepik_make-the-panda-drinking-pepsi-a-loop-of-hand-movem_kling_1080p_16-9_24fps_47281.mp4"
+                type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Scrollable Content -->
+    <main class="content-container">
+        <!-- Hero section spacer to initiate the scroll -->
+        <section class="spacer hero-spacer">
+            <h1 class="hero-title">Creative Technologist<span class="red-dot">.</span></h1>
+            <p class="hero-subtitle">Scroll down to explore</p>
+            <div class="scroll-indicator">
+                <div class="mouse"></div>
+            </div>
+        </section>
+
+        <section id="works" class="content-section">
+            <div class="section-content">
+                <h2>Selected Works</h2>
+                <p>Showcasing my latest projects and creative endeavors. Bridging the gap between design and technology.
+                </p>
+                <!-- Add placeholder cards for aesthetics -->
+                <div class="works-grid">
+                    <div class="work-card">Project Alpha</div>
+                    <div class="work-card">Project Beta</div>
+                    <div class="work-card">Project Gamma</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="instagram" class="content-section">
+            <div class="section-content">
+                <h2>Instagram</h2>
+                <p>Follow my visual journey and daily inspirations.</p>
+                <a href="https://www.instagram.com/faiz.i_/" class="btn-primary">View Profile</a>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="section-content">
+                <h2>Contact</h2>
+                <p>Let's create something illuminating together.</p>
+                <a href="mailto:hello@example.com" class="btn-primary">Say Hello</a>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
