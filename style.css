@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&family=Poppins:wght@300;400;500&display=swap');
 
 :root {
     --text-primary: #ffffff;
@@ -38,11 +38,26 @@ body {
     background-color: #000;
 }
 
+.hero-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    mask-image: radial-gradient(circle at center, transparent 15%, black 80%);
+    -webkit-mask-image: radial-gradient(circle at center, transparent 15%, black 80%);
+    z-index: 1;
+}
+
 .bg-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
+    opacity: 0.6;
 }
 
 /* Navigation */
@@ -151,6 +166,7 @@ body {
     align-items: center;
     text-align: center;
     min-height: 100vh;
+    padding-top: 25vh;
 }
 
 .hero-title {
@@ -173,19 +189,97 @@ body {
     font-weight: 700;
 }
 
-.hero-subtitle {
-    font-size: 1.1rem;
-    font-weight: 300;
-    letter-spacing: 3px;
+.hero-roles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    color: var(--text-secondary);
-    text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 4px 15px rgba(0,0,0,0.6);
     
     /* Animation */
     opacity: 0;
     transform: translateY(20px);
-    animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards, breath 4s ease-in-out 1.9s infinite alternate;
 }
+
+@keyframes breath {
+    0% { transform: translateY(0) scale(0.98); opacity: 0.8; letter-spacing: 4px; }
+    100% { transform: translateY(0) scale(1.02); opacity: 1; letter-spacing: 6px; }
+}
+
+.role-item {
+    flex: 1;
+}
+.role-item.left { text-align: left; }
+.role-item.center { text-align: center; }
+.role-item.right { text-align: right; }
+
+.hero-buttons {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+.btn-glass {
+    position: relative;
+    padding: 16px 40px;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 40px;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3), inset 0 0 10px rgba(255,255,255,0.05);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(255, 255, 255, 0.3), 0 0 25px rgba(255, 255, 255, 0.4);
+    transform: translateY(-5px);
+    color: #fff;
+}
+
+.btn-glass::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0) 100%);
+    transform: skewX(-25deg);
+    animation: shine 6s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    15% { left: 200%; }
+    100% { left: 200%; }
+}
+
+/* Spiral effect removed */
 
 @keyframes slideUpFade {
     to {
@@ -329,22 +423,49 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
     .navbar {
-        padding: 20px 30px;
+        padding: 20px 20px;
+        width: 100%;
     }
     .navbar.scrolled {
-        padding: 15px 30px;
+        padding: 15px 20px;
     }
     .nav-links {
         display: none; /* In a real app, add a hamburger menu */
     }
+    .hero-spacer {
+        justify-content: flex-end;
+        padding-bottom: 12vh;
+    }
     .hero-title {
-        font-size: 3.5rem;
-        padding: 0 20px;
+        font-size: 3rem;
+        padding: 0 10px;
+        margin-bottom: 15px;
+    }
+    .hero-roles {
+        width: 95%;
+        font-size: 0.70rem;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        width: 80%;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+    .btn-glass {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
     }
     .content-section h2 {
         font-size: 2.8rem;
     }
     .content-section {
-        padding: 80px 30px;
+        padding: 80px 20px;
+    }
+    .bg-video {
+        object-position: center;
     }
 }
