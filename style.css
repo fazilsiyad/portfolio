@@ -366,36 +366,74 @@ body {
     font-weight: 300;
 }
 
-/* Works Grid */
-.works-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    margin-top: 50px;
+/* Swiper Carousel Styles */
+.works-swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
 }
 
-.work-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 16px;
-    height: 400px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.5rem;
-    color: var(--text-secondary);
+.work-slide {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 320px;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.6), inset 0 0 0 2px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.4s ease;
+}
+
+.work-slide::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0; top: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 50%);
+    opacity: 0.7;
+    transition: opacity 0.4s ease;
+}
+
+.work-slide:hover::after {
+    opacity: 0.9;
+}
+
+.work-slide:hover {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.15);
+}
+
+.slide-overlay {
+    position: absolute;
+    bottom: 25px;
+    left: 20px;
+    right: 20px;
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    transform: translateY(10px);
+    opacity: 0.8;
     transition: all 0.4s ease;
-    cursor: pointer;
-    backdrop-filter: blur(5px);
 }
 
-.work-card:hover {
-    background: rgba(255, 255, 255, 0.08);
-    transform: translateY(-10px);
-    color: var(--text-primary);
-    border-color: rgba(255, 255, 255, 0.2);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+.work-slide:hover .slide-overlay {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.slide-overlay h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.slide-overlay p {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
 /* Buttons */

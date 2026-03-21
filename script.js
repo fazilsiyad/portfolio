@@ -42,4 +42,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Initialize Swiper Coverflow for Recent Works
+    if (typeof Swiper !== 'undefined') {
+        const worksSwiper = new Swiper('.works-swiper', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: 'auto',
+            speed: 700,
+            coverflowEffect: {
+                rotate: 0,
+                stretch: -60,
+                depth: 200,
+                modifier: 1.5,
+                slideShadows: true,
+                scale: 0.9,
+            },
+            loop: true,
+            autoplay: {
+                delay: 1000,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true
+            }
+        });
+    }
 });
