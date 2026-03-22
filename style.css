@@ -609,27 +609,35 @@ body {
     }
 
     .hero-greeting {
-        font-size: clamp(1.6rem, 6vw, 2.2rem);
-        margin-bottom: -5px;
-    }
-
-    .hero-title {
-        font-size: clamp(2.2rem, 9.5vw, 3.2rem);
-        padding: 0;
-        margin-top: 0;
-        margin-bottom: 20px;
+        font-size: clamp(2.6rem, 11vw, 3.5rem);
+        margin-bottom: 5px;
+        letter-spacing: -1.5px;
         line-height: 1.1;
     }
 
+    .hero-title {
+        display: flex;
+        flex-direction: column;
+        font-size: clamp(3.2rem, 16vw, 5rem);
+        padding: 0;
+        margin-top: 0;
+        margin-bottom: 25px;
+        line-height: 0.95;
+        letter-spacing: -2px;
+    }
+
     .word-slider {
-        display: grid;
-        margin-top: 5px;
+        display: block;
+        font-size: clamp(2.1rem, 9vw, 3rem);
+        letter-spacing: -1px;
+        margin-top: 4px;
+        color: rgba(255, 255, 255, 0.85);
     }
 
     .profile-pic-wrapper {
-        width: clamp(45px, 12vw, 55px);
-        height: clamp(55px, 14vw, 65px);
-        border-radius: 14px;
+        width: clamp(55px, 14vw, 70px);
+        height: clamp(65px, 16vw, 80px);
+        border-radius: 16px;
         margin: 0 4px;
         vertical-align: middle;
     }
