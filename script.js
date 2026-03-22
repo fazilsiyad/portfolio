@@ -1,4 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Loading Animation
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Force scroll to top on load for aesthetic start
+        window.scrollTo(0, 0);
+        document.body.style.overflow = 'hidden';
+        
+        setTimeout(() => {
+            preloader.classList.add('fade-out');
+            document.body.style.overflow = '';
+            
+            // Remove from DOM after dissolve transition completes
+            setTimeout(() => {
+                preloader.remove();
+            }, 800);
+        }, 3000);
+    }
+
     const navbar = document.querySelector('.navbar');
     
     let lastScrollY = window.scrollY;

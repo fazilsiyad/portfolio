@@ -28,6 +28,104 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* Preloader */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #050505;
+    z-index: 99999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+#preloader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.preloader-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 200px;
+}
+
+.camera-icon {
+    position: absolute;
+    color: #fff;
+    animation: cameraShake 3s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    z-index: 10;
+}
+
+.camera-flash {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: #ffffff;
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 20;
+    animation: flashEffect 3s ease forwards;
+}
+
+.preloader-pic {
+    width: 140px;
+    height: 140px;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    animation: revealPic 3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    position: absolute;
+}
+
+.preloader-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%) contrast(1.2);
+    animation: picColor 3s ease forwards;
+}
+
+@keyframes flashEffect {
+    0%, 30% { opacity: 0; transform: translate(-50%, -50%) scale(1); box-shadow: 0 0 0 rgba(255,255,255,0); }
+    33% { opacity: 1; transform: translate(-50%, -50%) scale(30); box-shadow: 0 0 100px rgba(255,255,255,1); }
+    40%, 100% { opacity: 0; transform: translate(-50%, -50%) scale(0); box-shadow: 0 0 0 rgba(255,255,255,0); }
+}
+
+@keyframes cameraShake {
+    0%, 25% { transform: translateY(0) scale(1.2); opacity: 1; }
+    28% { transform: translateY(-5px) scale(1.1); opacity: 1; }
+    31% { transform: translateY(2px) scale(1.1); opacity: 1; }
+    34%, 100% { transform: translateY(0) scale(1); opacity: 0; }
+}
+
+@keyframes revealPic {
+    0%, 32% { opacity: 0; transform: scale(0.8) translateY(20px); }
+    36% { opacity: 1; transform: scale(1.05) translateY(0); }
+    45%, 90% { opacity: 1; transform: scale(1) translateY(0); }
+    100% { opacity: 1; transform: scale(1) translateY(0); box-shadow: 0 0 30px rgba(255,255,255,0.1); }
+}
+
+@keyframes picColor {
+    0%, 45% { filter: grayscale(100%) contrast(1.2); }
+    90%, 100% { filter: grayscale(0%) contrast(1); }
+}
+
 /* Background Video Setup (Fixed full screen) */
 .hero-background {
     position: fixed;
