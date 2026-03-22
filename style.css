@@ -169,12 +169,34 @@ body {
     padding-top: 25vh;
 }
 
+.hero-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.hero-greeting {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.2rem;
+    font-weight: 300;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: -5px;
+    letter-spacing: -1px;
+    z-index: 2;
+    text-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUpFade 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+}
+
 .hero-title {
     font-family: 'Outfit', sans-serif;
     font-size: 5.5rem;
     font-weight: 200;
     letter-spacing: -1.5px;
     line-height: 1.1;
+    margin-top: 0;
     margin-bottom: 16px;
     text-shadow: 0 10px 30px rgba(0,0,0,0.6);
     
@@ -187,6 +209,37 @@ body {
 .hero-title .red-dot {
     color: #ff0000;
     font-weight: 700;
+}
+
+.profile-pic-wrapper {
+    width: 70px;
+    height: 80px;
+    border-radius: 20px;
+    vertical-align: baseline;
+    margin: 0 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    display: inline-block;
+    overflow: hidden;
+    transform: rotate(6deg);
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.profile-pic-wrapper:hover {
+    transform: rotate(0deg);
+}
+
+.profile-pic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.05); /* Slight default zoom to prevent edges showing during scale/rotate */
+    transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    display: block;
+}
+
+.profile-pic-wrapper:hover .profile-pic {
+    transform: scale(1.2);
 }
 
 .hero-roles {
@@ -474,10 +527,22 @@ body {
         justify-content: flex-end;
         padding-bottom: 12vh;
     }
+    .hero-greeting {
+        font-size: 2.2rem;
+        margin-bottom: -5px;
+    }
     .hero-title {
         font-size: 3rem;
         padding: 0 10px;
+        margin-top: 0;
         margin-bottom: 15px;
+    }
+    .profile-pic-wrapper {
+        width: 50px;
+        height: 60px;
+        border-radius: 15px;
+        margin: 0 8px;
+        vertical-align: baseline;
     }
     .hero-roles {
         width: 95%;
