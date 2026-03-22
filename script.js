@@ -2,19 +2,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Loading Animation
     const preloader = document.getElementById('preloader');
     if (preloader) {
-        // Force scroll to top on load for aesthetic start
         window.scrollTo(0, 0);
         document.body.style.overflow = 'hidden';
         
+        const phase1 = preloader.querySelector('.phase-1');
+        const phase2 = preloader.querySelector('.phase-2');
+        const typingEl = preloader.querySelector('.typing-text');
+        const typeText = "the best in..";
+
+        // Phase 1: Typing
+        let i = 0;
+        const typer = setInterval(() => {
+            if(typingEl) typingEl.textContent += typeText[i];
+            i++;
+            if(i >= typeText.length) {
+                clearInterval(typer);
+                
+                // Dissolve Phase 1 after typing finish
+                setTimeout(() => {
+                    phase1.classList.remove('active');
+                    
+                    // Show Phase 2
+                    setTimeout(() => {
+                        phase2.classList.add('active');
+                        
+                        // Pic moves left + Text reveals (Snappier)
+                        setTimeout(() => {
+                            phase2.classList.add('revealing');
+                            
+                            // Morph Text (Snappier)
+                            setTimeout(() => {
+                                preloader.classList.add('do-morph');
+                            }, 500);
+                        }, 350);
+                    }, 350);
+                }, 350);
+            }
+        }, 50); // Snappier typing too
+        // Final Dissolve
         setTimeout(() => {
             preloader.classList.add('fade-out');
             document.body.style.overflow = '';
-            
-            // Remove from DOM after dissolve transition completes
-            setTimeout(() => {
-                preloader.remove();
-            }, 800);
-        }, 4200);
+            setTimeout(() => preloader.remove(), 800);
+        }, 3000);
     }
 
     const navbar = document.querySelector('.navbar');
