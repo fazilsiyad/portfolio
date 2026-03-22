@@ -609,12 +609,12 @@ body {
     }
 
     .hero-greeting {
-        font-size: 2.2rem;
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
         margin-bottom: -5px;
     }
 
     .hero-title {
-        font-size: 3.2rem;
+        font-size: clamp(2.2rem, 9.5vw, 3.2rem);
         padding: 0;
         margin-top: 0;
         margin-bottom: 20px;
@@ -627,10 +627,10 @@ body {
     }
 
     .profile-pic-wrapper {
-        width: 55px;
-        height: 65px;
+        width: clamp(45px, 12vw, 55px);
+        height: clamp(55px, 14vw, 65px);
         border-radius: 14px;
-        margin: 0 6px;
+        margin: 0 4px;
         vertical-align: middle;
     }
 
