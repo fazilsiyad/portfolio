@@ -25,12 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Smooth scroll for anchor links
+    // 3. Smooth scroll for anchor links & Modal trigger
+    const modalOverlay = document.getElementById('contact-modal');
+    const modalClose = document.getElementById('modal-close');
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href');
             
+            if (targetId === '#contact' || targetId === '#contact-modal') {
+                if(modalOverlay) modalOverlay.classList.add('active');
+                return;
+            }
             if (targetId === '#') return;
             
             const targetElement = document.querySelector(targetId);
@@ -42,6 +49,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    if(modalClose && modalOverlay) {
+        modalClose.addEventListener('click', () => {
+            modalOverlay.classList.remove('active');
+        });
+        modalOverlay.addEventListener('click', (e) => {
+            if(e.target === modalOverlay) {
+                modalOverlay.classList.remove('active');
+            }
+        });
+    }
+
+    const contactForm = document.getElementById('contact-form');
+    const formView = document.getElementById('modal-form-view');
+    const successView = document.getElementById('modal-success-view');
+
+    if(contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            formView.classList.add('hidden');
+            successView.classList.remove('hidden');
+        });
+    }
 
     // Initialize Swiper Coverflow for Recent Works
     if (typeof Swiper !== 'undefined') {

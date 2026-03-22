@@ -42,13 +42,11 @@
                     Fazil
                 </h2>
                 <h1 class="hero-title">
-                    Creative <span class="word-slider"><span class="word-slider-inner"><span class="slide-item">Technologist</span><span class="slide-item">Video Editor</span><span class="slide-item">Graphic Designer</span><span class="slide-item">Developer</span><span class="slide-item">AI ML Student</span><span class="slide-item">Content Creation</span><span class="slide-item">Film Maker</span><span class="slide-item" aria-hidden="true">Technologist</span></span></span><span class="red-dot">.</span>
+                    Creative <span class="word-slider"><span class="word-slider-inner"><span class="slide-item">Technologist<span class="red-dot">.</span></span><span class="slide-item">Video Editor<span class="red-dot">.</span></span><span class="slide-item">Graphic Designer<span class="red-dot">.</span></span><span class="slide-item">Developer<span class="red-dot">.</span></span><span class="slide-item">AI ML Student<span class="red-dot">.</span></span><span class="slide-item">Content Creation<span class="red-dot">.</span></span><span class="slide-item">Film Maker<span class="red-dot">.</span></span><span class="slide-item" aria-hidden="true">Technologist<span class="red-dot">.</span></span></span></span>
                 </h1>
-            </div>
-            <div class="hero-roles">
-                <span class="role-item left">Design</span>
-                <span class="role-item center">Editor</span>
-                <span class="role-item right">Development</span>
+                <div class="hero-quote">
+                    "Building ideas that think"
+                </div>
             </div>
             <div class="hero-buttons">
                 <a href="#" class="btn-glass">Resume</a>
@@ -162,10 +160,67 @@
             <div class="section-content">
                 <h2>Contact</h2>
                 <p>Let's create something illuminating together.</p>
-                <a href="mailto:hello@example.com" class="btn-primary">Say Hello</a>
+                <a href="#contact" class="btn-primary" id="trigger-contact">Say Hello</a>
             </div>
         </section>
     </main>
+
+    <!-- Contact Modal Overlay -->
+    <div class="modal-overlay" id="contact-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div class="modal-header-bg"></div>
+            
+            <div class="modal-avatar">
+                <img src="profile.jpg.jpeg" alt="Fazil" class="modal-profile-pic">
+            </div>
+            
+            <div class="modal-body">
+                <h3>Fazil S</h3>
+                <div class="modal-badges">
+                    <span class="badge status-badge"><span class="status-dot"></span> Open to work</span>
+                </div>
+                
+                <div class="modal-form-container" id="modal-form-view">
+                    <form id="contact-form">
+                        <input type="text" id="contact-name" placeholder="Name" required>
+                        <input type="text" id="contact-wa" placeholder="WhatsApp Number" required>
+                        <textarea id="contact-desc" placeholder="Description / Project Details" rows="2" required></textarea>
+                        
+                        <div class="modal-actions">
+                            <button type="submit" class="btn-submit">+ Submit</button>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=fazilofcl@gmail.com" target="_blank" class="btn-mail" title="Send Email">
+                                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg" alt="Gmail" width="22" height="22">
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-success-view hidden" id="modal-success-view">
+                    <div class="success-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                    </div>
+                    <h4>Response noted successfully</h4>
+                    <p>Will contact you soon.</p>
+                </div>
+                
+                <div class="modal-footer">
+                    <span class="left">+91 7736186993</span>
+                    <span class="right">fazilofcl@gmail.com</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp Floating Widget -->
+    <div class="whatsapp-widget">
+        <div class="wa-tooltip">
+            Ping me<span class="typing-dots"><span>.</span><span>.</span><span>.</span></span>
+        </div>
+        <a href="https://wa.me/917736186993" target="_blank" class="wa-btn" title="Chat on WhatsApp">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="35" height="35">
+        </a>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
