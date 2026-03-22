@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 preloader.remove();
             }, 800);
-        }, 3000);
+        }, 4200);
     }
 
     const navbar = document.querySelector('.navbar');
