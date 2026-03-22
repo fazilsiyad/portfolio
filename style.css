@@ -17,6 +17,7 @@
 html {
     scroll-behavior: smooth;
     background-color: #050505;
+    overflow-x: hidden;
     /* Fallback before images load */
 }
 
@@ -608,24 +609,29 @@ body {
     }
 
     .hero-greeting {
-        font-size: 3.5rem;
-        margin-bottom: -10px;
+        font-size: 2.2rem;
+        margin-bottom: -5px;
     }
 
     .hero-title {
-        font-size: 5rem;
-        padding: 0 5px;
+        font-size: 3.2rem;
+        padding: 0;
         margin-top: 0;
         margin-bottom: 20px;
-        line-height: 1.05;
+        line-height: 1.1;
+    }
+
+    .word-slider {
+        display: grid;
+        margin-top: 5px;
     }
 
     .profile-pic-wrapper {
-        width: 70px;
-        height: 80px;
-        border-radius: 18px;
+        width: 55px;
+        height: 65px;
+        border-radius: 14px;
         margin: 0 6px;
-        vertical-align: baseline;
+        vertical-align: middle;
     }
 
     .hero-quote {
@@ -710,7 +716,7 @@ body {
     right: 20px;
     background: transparent;
     border: none;
-    color: rgba(0,0,0,0.5);
+    color: rgba(0, 0, 0, 0.5);
     font-size: 28px;
     cursor: pointer;
     z-index: 10;
@@ -736,7 +742,7 @@ body {
     border-radius: 50%;
     padding: 4px;
     background: #ffffff;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
 }
 
 .modal-profile-pic {
@@ -807,12 +813,12 @@ body {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
     }
-    
+
     70% {
         transform: scale(1.1);
         box-shadow: 0 0 0 8px rgba(76, 175, 80, 0);
     }
-    
+
     100% {
         transform: scale(0.95);
         box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
@@ -844,7 +850,7 @@ body {
 .modal-form-container textarea:focus {
     background: #ffffff;
     border-color: #000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .modal-actions {
@@ -865,13 +871,13 @@ body {
     font-size: 1.05rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     transition: all 0.3s;
 }
 
 .btn-submit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.25);
     background: #111;
 }
 
@@ -931,8 +937,15 @@ body {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .modal-footer {
@@ -982,9 +995,20 @@ body {
 }
 
 @keyframes waBreath {
-    0% { transform: scale(1); box-shadow: 0 0 0 rgba(37, 211, 102, 0.4); }
-    50% { transform: scale(1.05); box-shadow: 0 0 15px rgba(37, 211, 102, 0.6); }
-    100% { transform: scale(1); box-shadow: 0 0 0 rgba(37, 211, 102, 0.4); }
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(37, 211, 102, 0.4);
+    }
+
+    50% {
+        transform: scale(1.05);
+        box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 rgba(37, 211, 102, 0.4);
+    }
 }
 
 .wa-tooltip {
@@ -1021,9 +1045,27 @@ body {
 }
 
 @keyframes randomPing {
-    0%, 5% { opacity: 0; transform: translateY(10px) scale(0.9); pointer-events: none; }
-    15%, 45% { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-    55%, 100% { opacity: 0; transform: translateY(10px) scale(0.9); pointer-events: none; }
+
+    0%,
+    5% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+        pointer-events: none;
+    }
+
+    15%,
+    45% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        pointer-events: auto;
+    }
+
+    55%,
+    100% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.9);
+        pointer-events: none;
+    }
 }
 
 .typing-dots span {
@@ -1032,13 +1074,31 @@ body {
     margin-left: 2px;
 }
 
-.typing-dots span:nth-child(1) { animation-delay: 0s; }
-.typing-dots span:nth-child(2) { animation-delay: 0.2s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+.typing-dots span:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.typing-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
 
 @keyframes typingBounce {
-    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
-    40% { transform: translateY(-3px); opacity: 1; }
+
+    0%,
+    80%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+
+    40% {
+        transform: translateY(-3px);
+        opacity: 1;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1046,6 +1106,7 @@ body {
         bottom: 20px;
         right: 20px;
     }
+
     .wa-btn {
         width: 50px;
         height: 50px;
