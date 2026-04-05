@@ -53,6 +53,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Mobile Navigation Logic ---
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+    const navOverlay = document.getElementById('nav-overlay');
+    const navLinkItems = document.querySelectorAll('.nav-links li a');
+
+    function toggleMenu() {
+        navToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        navOverlay.classList.toggle('active');
+        
+        // Prevent body scroll when menu is active
+        if (navLinks.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    if (navToggle) {
+        navToggle.addEventListener('click', toggleMenu);
+    }
+
+    if (navOverlay) {
+        navOverlay.addEventListener('click', toggleMenu);
+    }
+
+    // Close menu when a link is clicked
+    navLinkItems.forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
+    });
+
     // 3. Smooth scroll for anchor links & Modal trigger
     const modalOverlay = document.getElementById('contact-modal');
     const modalClose = document.getElementById('modal-close');

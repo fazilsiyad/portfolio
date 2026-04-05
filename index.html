@@ -16,10 +16,6 @@
         <!-- Phase 2: Picture & Morphing Text -->
         <div class="preloader-phase phase-2 active">
             <div class="rectangle-wrapper">
-                <div class="rectangle-pic">
-                    <img src="profile.jpg.jpeg" alt="Fazil">
-                    <div class="pic-bloom"></div>
-                </div>
                 <div class="morph-container poppins-font">
                     <span class="morph-word word-hap">happiness</span>
                     <span class="morph-word word-faiz">faiziness</span>
@@ -31,17 +27,19 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">fazil</div>
-        <ul class="nav-links">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul class="nav-links" id="nav-links">
             <li><a href="#works">Works</a></li>
             <li><a href="https://www.instagram.com/faiz.i_/">Instagram</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
+    <div class="nav-overlay" id="nav-overlay"></div>
 
-    <!-- Background Video Container -->
-    <div class="hero-background">
-        <img src="landingpage.jpg" alt="Creative Designer Landing Page" class="bg-image">
-    </div>
 
     <!-- Scrollable Content -->
     <main class="content-container">
