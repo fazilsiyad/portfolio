@@ -162,6 +162,56 @@ body {
     transform: translateY(0);
 }
 
+/* Mobile centering for Loading Screen */
+@media (max-width: 600px) {
+    .preloader-phase.active.revealing .rectangle-wrapper {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .rectangle-pic {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto;
+    }
+
+    .morph-container.poppins-font {
+        width: 100vw !important;
+        justify-content: center;
+        font-size: 1.5rem;
+        height: 50px;
+        margin-left: -20px; /* Counteracting container padding if any */
+        overflow: visible; /* Allow text to be seen if overflow occurs, but better to fit it */
+    }
+
+    .preloader-phase.active.revealing .morph-container.poppins-font {
+        width: 100vw !important;
+        opacity: 1;
+    }
+    
+    .morph-word {
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        width: 100%;
+    }
+    
+    .preloader-phase.active.revealing .morph-word.word-faiz {
+        transform: translateX(-50%) translateY(30px);
+    }
+
+    #preloader.do-morph .word-hap {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-30px);
+    }
+    
+    #preloader.do-morph .word-faiz {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
 /* Background Video Setup (Fixed full screen) */
 .hero-background {
     position: fixed;
@@ -1320,8 +1370,12 @@ body {
         letter-spacing: 1px;
     }
 
+    .hero-background {
+        height: 65vh; /* Reduce size on mobile to prevent excessive zoom */
+    }
+
     .bg-image {
-        object-position: center top; /* Ensure face is visible */
+        object-position: center; /* Center focus for better mobile framing */
     }
 
     .hero-btns {
