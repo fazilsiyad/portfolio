@@ -1,70 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Loading Animation
+    // 1. Loading Animation (Focused on Phase 2: Happiness/Faiziness)
     const preloader = document.getElementById('preloader');
     if (preloader) {
         window.scrollTo(0, 0);
         document.body.style.overflow = 'hidden';
         
-        const phase1 = preloader.querySelector('.phase-1');
         const phase2 = preloader.querySelector('.phase-2');
-        const tiles = preloader.querySelectorAll('.logo-tile');
 
-        const tools = [
-            { icon: 'https://cdn.simpleicons.org/adobeaftereffects/cf96fd', class: 'tile-ae' },
-            { icon: 'https://cdn.simpleicons.org/adobepremierepro/ea77ff', class: 'tile-pr' },
-            { icon: 'https://cdn.simpleicons.org/blender/e87d0d', class: 'tile-bl' },
-            { icon: 'https://cdn.simpleicons.org/figma/ff7262', class: 'tile-fg' },
-            { icon: 'https://cdn.simpleicons.org/openai/74aa9c', class: 'tile-chat' },
-            { icon: 'https://cdn.simpleicons.org/visualstudiocode/007acc', class: 'tile-vs' },
-            { icon: 'https://cdn.simpleicons.org/google/ffffff', class: 'tile-ag' }
-        ];
-
-        // Shuffle Animation
-        let intervalCount = 0;
-        const shuffler = setInterval(() => {
-            tiles.forEach(tile => {
-                const tool = tools[Math.floor(Math.random() * tools.length)];
-                const iconImg = tile.querySelector('.tile-icon');
-                if(iconImg) iconImg.src = tool.icon;
-                
-                tile.className = 'logo-tile has-icon ' + tool.class;
-            });
-            
-            intervalCount++;
-            if(intervalCount > 10) { // Shorter shuffle (~1.2s)
-                clearInterval(shuffler);
-                
-                // Settling on (De Si Gn Er)
-                const combination = ['De', 'Si', 'Gn', 'Er'];
-                tiles.forEach((tile, index) => {
-                    const textSpan = tile.querySelector('.tile-text');
-                    if(textSpan) textSpan.textContent = combination[index];
-                    tile.className = 'logo-tile settled'; 
-                });
-
-                // Phase 1 ends around 1.7s
-                setTimeout(() => {
-                    phase1.classList.remove('active');
-                    setTimeout(() => {
-                        phase2.classList.add('active');
-                        // Split timing: trigger revealing faster
-                        setTimeout(() => {
-                            phase2.classList.add('revealing');
-                            setTimeout(() => {
-                                preloader.classList.add('do-morph');
-                            }, 500); // Morph starts at ~2.8s
-                        }, 400); // Reveals at ~2.3s
-                    }, 200);
-                }, 500);
-            }
-        }, 120);
-
-        // Final Dissolve at 3.5s
+        // Start animation sequence
         setTimeout(() => {
-            preloader.classList.add('fade-out');
-            document.body.style.overflow = '';
-            setTimeout(() => preloader.remove(), 800);
-        }, 3500);
+            if (phase2) phase2.classList.add('revealing');
+            
+            // Trigger morph
+            setTimeout(() => {
+                preloader.classList.add('do-morph');
+            }, 600);
+            
+            // Final fade out
+            setTimeout(() => {
+                preloader.classList.add('fade-out');
+                document.body.style.overflow = '';
+                setTimeout(() => preloader.remove(), 800);
+            }, 1800);
+
+        }, 400); // Small initial delay for smooth start
     }
 
     const navbar = document.querySelector('.navbar');
