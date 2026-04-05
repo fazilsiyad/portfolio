@@ -1370,12 +1370,8 @@ body {
         letter-spacing: 1px;
     }
 
-    .hero-background {
-        height: 65vh; /* Reduce size on mobile to prevent excessive zoom */
-    }
-
     .bg-image {
-        object-position: center; /* Center focus for better mobile framing */
+        object-position: center top; /* Ensure face is visible */
     }
 
     .hero-btns {
