@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;600;700&family=Poppins:wght@300;400;500&family=Rock+Salt&family=Archivo+Black&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
     --text-primary: #ffffff;
@@ -165,22 +165,24 @@ body {
         justify-content: center;
         font-size: 1.5rem;
         height: 50px;
-        margin-left: -20px; /* Counteracting container padding if any */
-        overflow: visible; /* Allow text to be seen if overflow occurs, but better to fit it */
+        margin-left: -20px;
+        /* Counteracting container padding if any */
+        overflow: visible;
+        /* Allow text to be seen if overflow occurs, but better to fit it */
     }
 
     .preloader-phase.active.revealing .morph-container.poppins-font {
         width: 100vw !important;
         opacity: 1;
     }
-    
+
     .morph-word {
         left: 50%;
         transform: translateX(-50%);
         text-align: center;
         width: 100%;
     }
-    
+
     .preloader-phase.active.revealing .morph-word.word-faiz {
         transform: translateX(-50%) translateY(30px);
     }
@@ -189,7 +191,7 @@ body {
         opacity: 0;
         transform: translateX(-50%) translateY(-30px);
     }
-    
+
     #preloader.do-morph .word-faiz {
         opacity: 1;
         transform: translateX(-50%) translateY(0);
@@ -242,9 +244,17 @@ body {
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.nav-toggle span:nth-child(1) { top: 0; }
-.nav-toggle span:nth-child(2) { top: 9px; }
-.nav-toggle span:nth-child(3) { top: 18px; }
+.nav-toggle span:nth-child(1) {
+    top: 0;
+}
+
+.nav-toggle span:nth-child(2) {
+    top: 9px;
+}
+
+.nav-toggle span:nth-child(3) {
+    top: 18px;
+}
 
 .nav-toggle.active span:nth-child(1) {
     transform: translateY(9px) rotate(45deg);
@@ -586,7 +596,7 @@ body {
 }
 
 .hero-btn:hover {
-    background: #00ff00;
+    background: #3ef938;
     color: #000;
     box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
 }
@@ -631,58 +641,298 @@ body {
 }
 
 @keyframes marquee-scroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-/* About Section */
+/* Refined About Section (Text Sticker Look) */
 .about-section {
-    min-height: 60vh;
-    padding: 100px 60px;
-    background: #000;
+    min-height: 100vh;
+    padding: 100px 40px;
+    background: #050505;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
+    position: relative;
 }
 
-.section-content-about {
-    max-width: 1200px;
+.about-canvas {
+    max-width: 1100px;
     width: 100%;
-    display: flex;
-    gap: 60px;
+    background: #0a0a0a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 100px 60px;
+    position: relative;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    border-radius: 4px;
+    z-index: 2;
+}
+
+.about-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 80px;
     align-items: center;
 }
 
-.about-title-wrapper {
-    flex-shrink: 0;
+/* Polaroid Styles */
+.polaroid-stack {
+    position: relative;
+    z-index: 5;
 }
 
-.about-title-vertical {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 4rem;
+.polaroid-frame {
+    background: #fff;
+    padding: 15px 15px 45px 15px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    transform: rotate(-3deg);
+    transition: transform 0.4s ease;
+    width: fit-content;
+    border-radius: 2px;
+}
+
+.polaroid-frame:hover {
+    transform: rotate(0deg) scale(1.02);
+}
+
+.polaroid-inner {
+    width: 280px;
+    height: 350px;
+    background: #000;
+    overflow: hidden;
+}
+
+.polaroid-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+    transition: filter 0.4s ease;
+    display: block;
+}
+
+.polaroid-frame:hover .polaroid-img {
+    filter: grayscale(0%);
+}
+
+.rock-salt-font {
+    font-family: 'Rock Salt', cursive;
+}
+
+.archivo-black-font {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+.baskerville-font {
+    font-family: 'Libre Baskerville', serif;
+}
+
+.signature-title {
+    position: absolute;
+    top: -40px;
+    left: -20px;
+    font-size: 2.5rem;
+    color: #fff;
+    z-index: 10;
+    text-shadow: 3px 3px 0 #ff0000;
+}
+
+/* Text Badges & Stickers */
+.sticker-container {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+.badge-sticker {
+    position: absolute;
+    padding: 10px 20px;
+    background: #00ff00;
+    color: #000;
     font-weight: 900;
-    margin: 0;
-    color: #00ff00;
-    line-height: 1;
+    text-transform: uppercase;
+    box-shadow: 5px 5px 0 rgba(255, 255, 255, 0.2);
+    z-index: 10;
 }
 
-.about-title-vertical .dot {
-    color: #fff;
-    margin-top: 10px;
+.age-badge {
+    top: -20px;
+    left: 15%;
+    transform: rotate(-5deg);
+    font-size: 0.9rem;
 }
 
-.about-description {
-    flex-grow: 1;
+.nationality-badge {
+    top: 40px;
+    right: 15%;
+    background: #fff;
+    color: #000;
+    transform: rotate(10deg);
+    font-size: 0.9rem;
 }
 
-.about-description p {
+.role-badge {
+    bottom: -20px;
+    left: 10%;
+    padding: 15px 30px;
     font-size: 1.5rem;
-    line-height: 1.4;
+    transform: rotate(3deg);
+    border: 2px solid #00ff00;
+    background: transparent;
+    color: #00ff00;
+}
+
+.editor-sticker-ae,
+.editor-sticker-pr {
+    position: absolute;
+    padding: 8px 12px;
+    font-weight: 900;
+    font-family: Arial, sans-serif;
+    color: #ffffff;
+    border-radius: 4px;
+    font-size: 1.1rem;
+}
+
+.editor-sticker-ae {
+    background: #00005b;
+    top: 20px;
+    right: -30px;
+    transform: rotate(15deg);
+}
+
+.editor-sticker-pr {
+    background: #310000;
+    bottom: 60px;
+    right: -25px;
+    transform: rotate(-10deg);
+}
+
+/* About Details */
+.about-details {
     color: #fff;
-    font-weight: 500;
-    text-align: justify;
-    margin: 0;
+}
+
+.headline-hi {
+    font-size: 10rem;
+    line-height: 0.8;
+    margin: 0 0 20px 0;
+    color: #fff;
+    letter-spacing: -5px;
+}
+
+.intro-mini {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #00ff00;
+    margin-bottom: 40px;
+    letter-spacing: -0.5px;
+    font-family: 'Poppins', sans-serif;
+    display: inline-block;
+}
+
+.typewriter-cursor {
+    color: #00ff00;
+    font-weight: 400;
+    animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.italic-lead {
+    font-size: 2.5rem;
+    font-style: italic;
+    margin-bottom: 25px;
+    opacity: 0.9;
+}
+
+.main-body-text {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    max-width: 500px;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Contact Pills */
+.contact-pill-bar {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 60px;
+    flex-wrap: wrap;
+}
+
+.pill-link {
+    text-decoration: none;
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 25px;
+    border-radius: 40px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.pill-link:hover {
+    background: #00ff00;
+    color: #000;
+    border-color: #00ff00;
+    transform: translateY(-3px);
+}
+
+.pill-sep {
+    color: #00ff00;
+    font-size: 1.2rem;
+}
+
+@media (max-width: 968px) {
+    .about-canvas {
+        padding: 60px 30px;
+    }
+
+    .about-wrapper {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .polaroid-frame {
+        margin: 0 auto;
+    }
+
+    .about-details {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main-body-text {
+        text-align: center;
+    }
+
+    .headline-hi {
+        font-size: 6rem;
+        letter-spacing: -2px;
+    }
+
+    .signature-title {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .age-badge,
+    .nationality-badge {
+        font-size: 0.7rem;
+        padding: 5px 10px;
+    }
 }
 
 @keyframes slideUpFade {
@@ -1430,7 +1680,8 @@ body {
     }
 
     .bg-image {
-        object-position: center top; /* Ensure face is visible */
+        object-position: center top;
+        /* Ensure face is visible */
     }
 
     .hero-btns {
@@ -1458,33 +1709,6 @@ body {
     }
 
     /* About Section Responsive */
-    .about-section {
-        padding: 60px 30px;
-    }
-
-    .section-content-about {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-    }
-
-    .about-title-vertical {
-        writing-mode: horizontal-tb;
-        transform: none;
-        font-size: 3rem;
-        text-align: center;
-    }
-
-    .about-title-vertical .dot {
-        display: inline;
-        vertical-align: middle;
-        margin-left: 10px;
-    }
-
-    .about-description p {
-        font-size: 1.2rem;
-        text-align: center;
-    }
 
     .whatsapp-widget {
         bottom: 20px;
@@ -1495,9 +1719,10 @@ body {
         width: 50px;
         height: 50px;
     }
-    
+
     .wa-tooltip {
-        display: none; /* Hide tooltip on small mobile to avoid clutter */
+        display: none;
+        /* Hide tooltip on small mobile to avoid clutter */
     }
 }
 
@@ -1526,7 +1751,8 @@ body {
     }
 
     .marquee-section {
-        transform: rotate(-2deg); /* Slightly less rotation on tiny screens */
+        transform: rotate(-2deg);
+        /* Slightly less rotation on tiny screens */
     }
 
     .marquee-content span {

@@ -161,4 +161,64 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // --- Typewriter Loop Effect ---
+    const typewriterElement = document.getElementById('typewriter-text');
+    if (typewriterElement) {
+        const words = JSON.parse(typewriterElement.getAttribute('data-words'));
+        let wordIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typeSpeed = 70; // Faster typing speed
+
+        function type() {
+            const currentWord = words[wordIndex];
+            const displayCharCount = isDeleting ? charIndex-- : charIndex++;
+            typewriterElement.textContent = currentWord.substring(0, displayCharCount);
+
+            if (!isDeleting && charIndex === currentWord.length + 1) {
+                // Wait at the end of the word
+                isDeleting = true;
+                typeSpeed = 800; // Shorter pause at the end
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                wordIndex = (wordIndex + 1) % words.length;
+                typeSpeed = 200; // Shorter pause before new word
+            } else {
+                typeSpeed = isDeleting ? 40 : 70; // High speed for both typing and deleting
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+
+        // Initialize only once when section is active
+        const startTypewriter = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    type();
+                    observer.unobserve(entry.target);
+                }
+            });
+        };
+
+        const typewriterObserver = new IntersectionObserver(startTypewriter, { threshold: 0.5 });
+        typewriterObserver.observe(document.querySelector('#about'));
+    }
+
+    // Intersection Observer for Section Animations
+    const observerOptions = {
+        threshold: 0.2
+    };
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('section').forEach(section => {
+        sectionObserver.observe(section);
+    });
 });
