@@ -158,6 +158,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 delay: 1000,
                 disableOnInteraction: false,
                 pauseOnMouseEnter: true
+            },
+            breakpoints: {
+                0: {
+                    coverflowEffect: {
+                        stretch: -30,
+                        depth: 120,
+                        modifier: 1,
+                    }
+                },
+                768: {
+                    coverflowEffect: {
+                        stretch: -60,
+                        depth: 200,
+                        modifier: 1.5,
+                    }
+                }
             }
         });
     }
