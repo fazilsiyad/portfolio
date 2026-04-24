@@ -205,6 +205,24 @@ document.addEventListener('DOMContentLoaded', () => {
         typewriterObserver.observe(document.querySelector('#about'));
     }
 
+    // Skill bar animation on scroll
+    const skillFills = document.querySelectorAll('.skill-fill');
+    if (skillFills.length > 0) {
+        const skillObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const fill = entry.target;
+                    const targetWidth = fill.getAttribute('data-width');
+                    fill.style.width = targetWidth + '%';
+                    fill.classList.add('animated');
+                    skillObserver.unobserve(fill);
+                }
+            });
+        }, { threshold: 0.3 });
+
+        skillFills.forEach(fill => skillObserver.observe(fill));
+    }
+
     // Intersection Observer for Section Animations
     const observerOptions = {
         threshold: 0.2
